@@ -16,10 +16,12 @@ enum class State {
 
 class Controller(sim:Simulator) {
     val waypoints = listOf(
-//        WayPoint(10.0, -10.0, 3.0),
-//        WayPoint(-10.0, 10.0, 3.0),
-//        WayPoint(0.0, 0.0, 1.2)
-
+        /**/
+        WayPoint(10.0, 10.0, 3.0),
+        WayPoint(-10.0, 10.0, 3.0),
+        WayPoint(0.0, 0.0, 1.2)
+        /**/
+        /*
         WayPoint(0.0, -6.0, 4.0 ),
         WayPoint(8.0, -6.0, 4.0 ),
         WayPoint(8.0,  6.0, 4.0 ),
@@ -27,6 +29,7 @@ class Controller(sim:Simulator) {
         WayPoint(-8.0, -6.0, 4.0 ),
         WayPoint(0.0, -6.0, 4.0 ),
         WayPoint(0.0, 0.0, 1.2 ),
+        */
     )
     var state = State.IDLE
     var wpindex = 0
@@ -128,7 +131,7 @@ class Controller(sim:Simulator) {
             else if (distance(waypoints[wpindex].x, x, waypoints[wpindex].y, y) > 0.2 ) {
                 var dtheta = angle(waypoints[wpindex].x,x,waypoints[wpindex].y,y) - yaw
                 if (dtheta <= -PI) dtheta += 2 * PI
-                println(dtheta)
+                // println(dtheta)
                 if (0 <= dtheta && dtheta <= PI) {
                     state = State.RIGHT
                     sim.vslh(PI/48)
